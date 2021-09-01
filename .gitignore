@@ -1,0 +1,10 @@
+increments/**/.nrepl-port
+increments/**/cheffy.iml
+increments/**/learn-datomic-course-files.iml
+increments/**/target/
+increments/**/*.md
+increments/**/resources/config.edn
+.cpcache
+.idea
+.clj-kondo/
+.lsp/
