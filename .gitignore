@@ -1,4 +1,5 @@
 increments/**/.nrepl-port
+cheffy/**/cheffy.iml
 increments/**/cheffy.iml
 increments/**/learn-datomic-course-files.iml
 increments/**/target/
