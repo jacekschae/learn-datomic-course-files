@@ -5,6 +5,7 @@ increments/**/learn-datomic-course-files.iml
 increments/**/target/
 increments/**/*.md
 increments/**/resources/config.edn
+.nrepl-port
 .cpcache
 .idea
 .clj-kondo/

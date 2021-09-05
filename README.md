@@ -6,7 +6,7 @@ Video course about Datomic Cloud. Including Datomic dev-local, Datomic Ions, and
 
 ## Course files
 
-The code in this repo includes one folder - `increments` - code for the start of each video (if you get lost somewhere along the way just copy the content of the video you are starting and continue).
+The code in this repo includes two folders - `increments` - code for the start of each video (if you get lost somewhere along the way just copy the content of the video you are starting and continue). `cheffy` this is the start of the project / course. It's the same code as in `increments/06-start`
 
 ### Clone
 
@@ -28,7 +28,7 @@ clj
 Probably you will run your REPL from your editor, and thre is nothing stopping you to run it from the command line:
 
 ```shell
-clj -X:cheffy.server/-main
+clj -M:dev src/main/cheffy/server.clj
 ```
 
 ## License
