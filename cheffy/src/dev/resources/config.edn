@@ -1,0 +1,6 @@
+{:server/jetty {:handler #ig/ref :cheffy/app
+                :port 3000}
+ :cheffy/app {:jdbc-url #ig/ref :db/postgres
+              :auth0 #ig/ref :auth/auth0}
+ :auth/auth0 {:client-secret "auth0-client-secret"}
+ :db/postgres {:jdbc-url "jdbc-url"}}
