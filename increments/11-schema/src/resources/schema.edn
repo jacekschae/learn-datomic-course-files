@@ -148,22 +148,6 @@
   :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/many}
 
- {:db/ident :notifications/notification-id
-  :db/doc "The id of the notification"
-  :db/valueType :db.type/uuid
-  :db/unique :db.unique/identity
-  :db/cardinality :db.cardinality/one}
-
- {:db/ident :notification/owner
-  :db/doc "The owner's id of the notification"
-  :db/valueType :db.type/ref
-  :db/cardinality :db.cardinality/one}
-
- {:db/ident :notification/count
-  :db/doc "The count of the notifications"
-  :db/valueType :db.type/long
-  :db/cardinality :db.cardinality/one
-  :db/noHistory true}
 
  ; message attributes
  {:db/ident :message/message-id
