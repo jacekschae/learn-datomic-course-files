@@ -1,0 +1,177 @@
+[; account attributes
+ {:db/ident :account/account-id
+  :db/doc "The id of the account"
+  :db/unique :db.unique/identity
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :account/display-name
+  :db/doc "The first name and last name of the account"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :account/picture-url
+  :db/doc "The picture-url of the account"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :account/conversations
+  :db/doc "The conversations of the account"
+  :db/valueType :db.type/ref
+  :db/isComponent true
+  :db/cardinality :db.cardinality/many}
+
+ {:db/ident :account/recipes
+  :db/doc "The recipes of the account"
+  :db/valueType :db.type/ref
+  :db/isComponent true
+  :db/cardinality :db.cardinality/many}
+
+ {:db/ident :account/favorite-recipes
+  :db/doc "The favorited recipes of the account"
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}
+
+
+ ; recipe attributes
+ {:db/ident :recipe/recipe-id
+  :db/doc "The id of the recipe"
+  :db/unique :db.unique/identity
+  :db/valueType :db.type/uuid
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/owner
+  :db/doc "The name of the recipe"
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/display-name
+  :db/doc "The name of the recipe"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/prep-time
+  :db/doc "The preparation time of the recipe"
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/favorite-count
+  :db/doc "The number of times a recipe has been marked as favorite"
+  :db/valueType :db.type/long
+  :db/noHistory true
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/image-url
+  :db/doc "The url of the recipe image"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/public?
+  :db/doc "The flag if a recipe is public or draft"
+  :db/valueType :db.type/boolean
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :recipe/steps
+  :db/doc "The steps of the recipe"
+  :db/isComponent true
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}
+
+ {:db/ident :recipe/ingredients
+  :db/doc "The ingredients of the recipe"
+  :db/isComponent true
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}
+
+
+ ; step attributes
+ {:db/ident :step/step-id
+  :db/doc "The id of the step"
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :step/description
+  :db/doc "The description of the step"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :step/sort-order
+  :db/doc "The sort order of the step"
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one}
+
+
+ ; ingredient attributes
+ {:db/ident :ingredient/ingredient-id
+  :db/doc "The id of the ingredient"
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :ingredient/display-name
+  :db/doc "The name of the ingredient"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :ingredient/amount
+  :db/doc "The amount of the ingredient"
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :ingredient/measure
+  :db/doc "The measure of the ingredient"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :ingredient/sort-order
+  :db/doc "The sort order of the ingredient"
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one}
+
+
+ ; conversation attributes
+ {:db/ident :conversation/conversation-id
+  :db/doc "The id of the conversation"
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :conversation/messages
+  :db/doc "The messages of the conversation"
+  :db/isComponent true
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}
+
+ {:db/ident :conversation/participants
+  :db/doc "The participants (account) ids of the conversation"
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}
+
+
+ ; message attributes
+ {:db/ident :message/message-id
+  :db/doc "The id of the message"
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :message/body
+  :db/doc "The body of the message"
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :message/owner
+  :db/doc "The owner's id of the message"
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :message/created-at
+  :db/doc "The created at of the message"
+  :db/valueType :db.type/instant
+  :db/cardinality :db.cardinality/one}
+
+ {:db/ident :message/read-by
+  :db/doc "The message ready by flag"
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many}]
