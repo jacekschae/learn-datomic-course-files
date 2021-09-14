@@ -1,0 +1,148 @@
+[; accounts
+ {:db/id "account_1"
+  :account/account-id "auth0|5fbf7db6271d5e0076903601"
+  :account/display-name "Auth0"
+  :account/favorite-recipes ["rec_1"]}
+ {:db/id "account_2"
+  :account/account-id "mike@mailinator.com"
+  :account/display-name "Mike"
+  :account/favorite-recipes ["rec_1"]}
+ {:db/id "account_3"
+  :account/account-id "jade@mailinator.com"
+  :account/display-name "Jade"
+  :account/favorite-recipes ["rec_1"]}
+ {:db/id "account_4"
+  :account/account-id "mark@mailinator.com"
+  :account/display-name "Mark"}
+
+
+ ; steps
+ {:db/id "step_1"
+  :step/step-id #uuid"867ed4bf-4628-48f4-944d-e6b7786bfa92"
+  :step/description "First step"
+  :step/sort-order 1}
+
+ {:db/id "step_2"
+  :step/step-id #uuid"803307da-8dec-4c1b-a0f2-36742ac0e7f2"
+  :step/description "Second step"
+  :step/sort-order 2}
+
+ {:db/id "step_3"
+  :step/step-id #uuid"22a82a84-91cc-40e2-8775-d5bee9d188ff"
+  :step/description "Third step"
+  :step/sort-order 3}
+
+
+ ; ingredient
+ {:db/id "ing_1"
+  :ingredient/ingredient-id #uuid"7afc6c6e-72bf-4e52-ac33-309bf6b823f7"
+  :ingredient/display-name "First ingredient"
+  :ingredient/amount 100
+  :ingredient/measure "stuff"
+  :ingredient/sort-order 1}
+
+ {:db/id "ing_2"
+  :ingredient/ingredient-id #uuid"7f0ac407-9ad1-4f3e-896b-3e273e41b277"
+  :ingredient/display-name "Second ingredient"
+  :ingredient/amount 200
+  :ingredient/measure "stuff"
+  :ingredient/sort-order 2}
+
+ {:db/id "ing_3"
+  :ingredient/ingredient-id #uuid"6a5bc9fe-6bd4-4bfe-8fd1-911647db0b04"
+  :ingredient/display-name "Third ingredient"
+  :ingredient/amount 300
+  :ingredient/measure "stuff"
+  :ingredient/sort-order 3}
+
+
+ ; recipes
+ {:db/id "rec_1"
+  :recipe/recipe-id #uuid"a3dde84c-4a33-45aa-b0f3-4bf9ac997680"
+  :recipe/public? false
+  :recipe/prep-time 45
+  :recipe/display-name "Splitony's Pizza"
+  :recipe/image-url "https://res.cloudinary.com/schae/image/upload/f_auto,h_400,q_80/v1548183465/cheffy/recipe/pizza.jpg"
+  :recipe/favorite-count 3
+  :recipe/owner "account_1"
+  :recipe/steps []
+  :recipe/ingredients []}
+
+ {:recipe/recipe-id #uuid"e1a37c6c-8027-4f63-9dd0-31174c0742b5"
+  :recipe/public? false
+  :recipe/prep-time 15
+  :recipe/display-name "Bolonese"
+  :recipe/image-url "https://res.cloudinary.com/schae/image/upload/f_auto,h_400,q_80/v1548183465/cheffy/recipe/pizza.jpg"
+  :recipe/favorite-count 0
+  :recipe/owner "account_1"
+  :recipe/steps []
+  :recipe/ingredients []}
+
+ {:recipe/recipe-id #uuid"471c09cd-d303-4656-a380-1c41dcf096db"
+  :recipe/public? true
+  :recipe/prep-time 10
+  :recipe/display-name "Rucola Salad"
+  :recipe/image-url "https://res.cloudinary.com/schae/image/upload/f_auto,h_400,q_80/v1548183354/cheffy/recipe/vegie-salad.jpg"
+  :recipe/favorite-count 0
+  :recipe/owner "account_1"
+  :recipe/steps ["step_1" "step_2" "step_3"]
+  :recipe/ingredients ["ing_1" "ing_2" "ing_3"]}
+
+ {:recipe/recipe-id #uuid"a1995316-80ea-4a98-939d-7c6295e4bb46"
+  :recipe/public? true
+  :recipe/prep-time 10
+  :recipe/display-name "Avocado Salad"
+  :recipe/image-url "https://res.cloudinary.com/schae/image/upload/f_auto,h_400,q_80/v1548183354/cheffy/recipe/vegie-salad.jpg"
+  :recipe/favorite-count 0
+  :recipe/owner "account_2"
+  :recipe/steps ["step_1" "step_2" "step_3"]
+  :recipe/ingredients ["ing_1" "ing_2" "ing_3"]}
+
+
+ ; messages
+ {:db/id "msg_1"
+  :message/message-id #uuid"5ae8cafb-1773-4730-9d8d-a76bd872d110"
+  :message/body "First message"
+  :message/owner "account_1"}
+
+ {:db/id "msg_2"
+  :message/message-id #uuid"1627c35a-d1da-4dd1-88be-aa101a1b5b98"
+  :message/body "Second message"
+  :message/owner "account_2"}
+
+ {:db/id "msg_3"
+  :message/message-id #uuid"5ae8cafb-1773-4731-8d8d-a76bd872d110"
+  :message/body "Third message"
+  :message/owner "account_1"}
+
+ {:db/id "msg_4"
+  :message/message-id #uuid"0f3ebcf0-3c6f-4258-9074-924d60252973"
+  :message/body "First message"
+  :message/owner "account_1"}
+
+ {:db/id "msg_5"
+  :message/message-id #uuid"dbcb3781-e070-4935-8b3f-afc48453bb20"
+  :message/body "Second message"
+  :message/owner "account_3"}
+
+ {:db/id "msg_6"
+  :message/message-id #uuid"dbcb3581-e070-4935-8bff-afd484b3bb20"
+  :message/body "First message"
+  :message/owner "account_3"}
+
+
+ ; conversations
+ {:db/id "conv_1"
+  :conversation/conversation-id #uuid"8d4ab926-d5cc-483d-9af0-19627ed468eb"
+  :conversation/messages ["msg_1" "msg_2" "msg_3"]
+  :conversation/participants ["account_1" "account_2"]}
+
+ {:db/id "conv_2"
+  :conversation/conversation-id #uuid"362d06c7-2702-4273-bcc3-0c04d2753b6f"
+  :conversation/messages ["msg_4" "msg_5"]
+  :conversation/participants ["account_1" "account_3"]}
+
+ {:db/id "conv_3"
+  :conversation/conversation-id #uuid"f9d8d63b-ed6a-4be3-93d2-aff370fe1a25"
+  :conversation/messages ["msg_6"]
+  :conversation/participants ["account_2" "account_3"]}]
