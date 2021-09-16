@@ -4,7 +4,7 @@
 
 (def routes
   ["/conversation" {:swagger {:tags ["conversations"]}
-                    :middleware [[mw/wrap-auth0]]}
+                    :middleware [[mw/wrap-db] [mw/wrap-auth0]]}
    [""
     {:get {:handler conversation/list-conversations
            :responses {200 {:body vector?}}

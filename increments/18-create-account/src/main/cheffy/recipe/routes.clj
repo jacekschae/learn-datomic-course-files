@@ -5,7 +5,7 @@
 
 (def routes
   ["/recipes" {:swagger {:tags ["recipes"]}
-               :middleware [[mw/wrap-auth0]]}
+               :middleware [[mw/wrap-db] [mw/wrap-auth0]]}
    [""
     {:get {:handler recipe/list-all-recipes
            :responses {200 {:body any?}}

@@ -1,6 +1,7 @@
 (ns cheffy.middleware
   (:require [ring.middleware.jwt :as jwt]
-            [ring.util.response :as rr]))
+            [ring.util.response :as rr]
+            [datomic.client.api :as d]))
 
 (def wrap-env
   {:name ::env
@@ -9,6 +10,15 @@
               (fn [handler]
                 (fn [request]
                   (handler (assoc request :env env)))))})
+
+(def wrap-db
+  {:name ::db
+   :description "Middleware for injecting db into request"
+   :wrap (fn [handler]
+           (fn [request]
+             (let [conn (get-in request [:env :datomic :conn])
+                   db (d/db conn)]
+               (handler (assoc-in request [:env :datomic :db] db)))))})
 
 (def wrap-auth0
   {:name ::auth0
