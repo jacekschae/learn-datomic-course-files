@@ -24,8 +24,8 @@
           :content-type :json
           :throw-exceptions false
           :body (m/encode "application/json"
-                          {:roles [(auth0/get-role-id token)]})}
-         (http/post (str "https://learn-reitit-playground.eu.auth0.com/api/v2/users/" uid "/roles")))))
+                  {:roles [(auth0/get-role-id token)]})}
+      (http/post (str "https://learn-reitit-playground.eu.auth0.com/api/v2/users/" uid "/roles")))))
 
 
 (defn delete-account!
@@ -34,8 +34,8 @@
         account-id (:sub claims)
         client-secret (-> env :auth0)
         delete-auth0-account! (http/delete
-                               (str "https://learn-reitit-playground.eu.auth0.com/api/v2/users/" account-id)
-                               {:headers {"Authorization" (str "Bearer " (auth0/get-management-token client-secret))}})]
+                                (str "https://learn-reitit-playground.eu.auth0.com/api/v2/users/" account-id)
+                                {:headers {"Authorization" (str "Bearer " (auth0/get-management-token client-secret))}})]
     (when (= (:status delete-auth0-account!) 204)
       (d/transact conn {:tx-data [[:db/retractEntity [:account/account-id account-id]]]})
       (rr/status 204))))

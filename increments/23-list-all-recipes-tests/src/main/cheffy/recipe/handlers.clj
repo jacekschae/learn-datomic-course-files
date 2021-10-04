@@ -7,7 +7,7 @@
 (defn list-all-recipes
   [{:keys [env claims] :as _request}]
   (let [account-id (:sub claims)]
-    ;; FIXME: recipe-db/find-all-recipes
+    (recipe-db/find-all-recipes (:datomic env) {:account-id account-id})
     ))
 
 (defn create-recipe!
