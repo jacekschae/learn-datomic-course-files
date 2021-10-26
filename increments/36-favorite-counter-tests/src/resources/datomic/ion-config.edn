@@ -1,0 +1,2 @@
+{:allow [cheffy.transaction-fn/inc-favorite-recipe
+         cheffy.transaction-fn/dec-favorite-recipe]}
