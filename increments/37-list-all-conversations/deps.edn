@@ -1,0 +1,23 @@
+{:paths
+ ["src/main" "src/resources"]
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.3"}
+  ring/ring {:mvn/version "1.9.4"}
+  integrant/integrant {:mvn/version "0.8.0"}
+  environ/environ {:mvn/version "1.2.0"}
+  metosin/reitit {:mvn/version "0.5.15"}
+  clj-http/clj-http {:mvn/version "3.12.3"}
+  ovotech/ring-jwt {:mvn/version "2.2.1"}}
+
+ :aliases
+ {:dev
+  {:extra-paths ["src/dev"]
+   :extra-deps {com.datomic/dev-local {:mvn/version "0.9.235"}
+                integrant/repl {:mvn/version "0.3.2"}}}
+
+  :test
+  {:extra-paths ["src/test"]
+   :extra-deps {com.datomic/dev-local {:mvn/version "0.9.235"}
+                ring/ring-mock {:mvn/version "0.4.0"}
+                integrant/repl {:mvn/version "0.3.2"}}}}}
