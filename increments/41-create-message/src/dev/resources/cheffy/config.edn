@@ -1,0 +1,8 @@
+{:server/jetty {:handler #ig/ref :cheffy/app
+                :port 3000}
+ :cheffy/app {:datomic #ig/ref :db/datomic
+              :auth0 #ig/ref :auth/auth0}
+ :auth/auth0 {:client-secret "Pir0LuiCDE5Us-2pWo3ajk0C6LIndbcXJ1cEp96kMwVhkwurVbMlTa4I7z-jKLKB"}
+ :db/datomic {:server-type :dev-local
+              :system "dev"
+              :db-name "learn-datomic"}}
