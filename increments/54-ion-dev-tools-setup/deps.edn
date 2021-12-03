@@ -1,0 +1,8 @@
+{:mvn/repos
+ {"datomic-cloud" {:url "s3://datomic-releases-1fc2183a/maven/releases"}
+  "cognitect-dev-tools" {:url "https://dev-tools.cognitect.com/maven/releases/"}}
+ 
+ :aliases
+ {:ion-dev
+  {:deps {com.datomic/ion-dev {:mvn/version "1.0.294"}}
+   :main-opts ["-m" "datomic.ion.dev"]}}}
