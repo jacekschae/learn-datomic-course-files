@@ -1,0 +1,7 @@
+{:cheffy.server/app {:datomic #ig/ref :cheffy.components.datomic-cloud
+                     :auth0 #ig/ref :cheffy.components.auth0/auth}
+ :cheffy.components.auth0/auth {:client-secret "<YOUR_CLIENT_SECRET>"}
+ :cheffy.components.datomic-cloud {:server-type :ion
+                                   :region "ap-northeast-1"
+                                   :system "cheffy-prod"
+                                   :db-name "cheffy-prod"}}
