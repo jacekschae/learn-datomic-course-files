@@ -1,0 +1,4 @@
+{:allow []
+ :lambdas {}
+ :http-direct {:handler-fn cheffy.ion/handler}
+ :app-name "cheffy"}
