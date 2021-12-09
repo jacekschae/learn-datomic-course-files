@@ -42,5 +42,9 @@
   [{:keys [claims env parameters] :as _request}]
   (let [account-id (:sub claims)
         conversation-id (-> parameters :path :conversation-id)]
-    ;; FIXME: conversation-db/read-messages
+    (conversation-db/read-messages
+      (:datomic env)
+      {:account-id account-id
+       :conversation-id conversation-id})
+    (rr/status 204)
     ))
