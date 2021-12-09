@@ -1,0 +1,8 @@
+{:cheffy.components.jetty/server {:handler #ig/ref :cheffy.server/app
+                                  :port 3000}
+ :cheffy.server/app {:datomic #ig/ref :cheffy.components.datomic-dev-local/db
+                     :auth0 #ig/ref :cheffy.components.auth0/auth}
+ :cheffy.components.auth0/auth {:client-secret "<YOUR_CLIENT_SECRET>"}
+ :cheffy.components.datomic-dev-local/db {:server-type :dev-local
+                                          :system "cheffy-dev"
+                                          :db-name "cheffy-db"}}
