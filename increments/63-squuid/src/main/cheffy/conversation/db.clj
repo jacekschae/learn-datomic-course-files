@@ -88,11 +88,6 @@
 
 (comment
 
-  (->> (d/q '[:find (pull ?c [*])
-              :where [?c :conversation/conversation-id #uuid"8d4ab926-d5cc-483d-9af0-19627ed468eb" ?tx]]
-            (d/db (:conn user/db)))
-       (sort-by :db/id))
-
   ; transact-message
   (let [conn (:conn user/datomic)
         conversation-id (sq/generate-squuid)

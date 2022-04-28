@@ -1,6 +1,5 @@
 (ns cheffy.conversation.db
-  (:require [datomic.client.api :as d]
-            [com.yetanalytics.squuid :as sq])
+  (:require [datomic.client.api :as d])
   (:import (java.util Date)))
 
 (def conversation-pattern
@@ -44,7 +43,7 @@
 
 (defn transact-message
   [{:keys [conn]} {:keys [conversation-id to from message-body]}]
-  (let [message-id (sq/generate-squuid)]
+  (let [message-id (random-uuid)]
     (d/transact conn {:tx-data [{:conversation/conversation-id conversation-id
                                  :conversation/participants (mapv #(vector :account/account-id %) [to from])
                                  :conversation/messages (str message-id)
@@ -88,18 +87,13 @@
 
 (comment
 
-  (->> (d/q '[:find (pull ?c [*])
-              :where [?c :conversation/conversation-id #uuid"8d4ab926-d5cc-483d-9af0-19627ed468eb" ?tx]]
-            (d/db (:conn user/db)))
-       (sort-by :db/id))
-
   ; transact-message
   (let [conn (:conn user/datomic)
-        conversation-id (sq/generate-squuid)
-        message-id (sq/generate-squuid)
+        conversation-id (random-uuid)
+        message-id (random-uuid)
         from "jade@mailinator.com"
         to "mark@mailinator.com"
-        message-body (str "message-" (sq/generate-squuid))]
+        message-body (str "message-" (random-uuid))]
     (d/transact conn {:tx-data [{:conversation/conversation-id conversation-id
                                  :conversation/participants (mapv #(vector :account/account-id %) [to from])
                                  :conversation/messages (str message-id)}

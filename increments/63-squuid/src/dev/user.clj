@@ -20,8 +20,6 @@
 
 (comment
 
-  (start-dev)
-
   (cheffy.auth0/get-management-token (-> state/system :cheffy.components.auth0/auth))
   (ig/load-namespaces
     (-> "config/dev.edn" slurp ig/read-string))

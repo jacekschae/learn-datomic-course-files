@@ -5,5 +5,4 @@
  :cheffy.components.auth0/auth {:client-secret "<YOUR_CLIENT_SECRET>"}
  :cheffy.components.datomic-dev-local/db {:server-type :dev-local
                                           :system "cheffy-dev"
-                                          :db-name "cheffy-db"
-                                          :storage-dir :mem}}
+                                          :db-name "cheffy-db"}}

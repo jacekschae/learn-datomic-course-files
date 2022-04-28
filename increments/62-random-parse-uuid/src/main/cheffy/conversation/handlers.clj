@@ -1,8 +1,7 @@
 (ns cheffy.conversation.handlers
   (:require [ring.util.response :as rr]
             [cheffy.conversation.db :as conversation-db]
-            [cheffy.responses :as responses]
-            [com.yetanalytics.squuid :as sq]))
+            [cheffy.responses :as responses]))
 
 (defn list-conversations
   [{:keys [env claims] :as _request}]
@@ -25,7 +24,7 @@
   [{:keys [parameters env claims] :as _request}]
   (let [conversation-id (if-let [s (-> parameters :path :conversation-id)]
                           (parse-uuid s)
-                          (sq/generate-squuid))
+                          (random-uuid))
         message (:body parameters)
         from (:sub claims)]
     (conversation-db/transact-message

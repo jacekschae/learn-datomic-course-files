@@ -1,8 +1,7 @@
 (ns cheffy.recipe.handlers
   (:require [cheffy.recipe.db :as recipe-db]
             [cheffy.responses :as responses]
-            [ring.util.response :as rr]
-            [com.yetanalytics.squuid :as sq]))
+            [ring.util.response :as rr]))
 
 (defn list-all-recipes
   [{:keys [env claims] :as _request}]
@@ -12,7 +11,7 @@
 
 (defn create-recipe!
   [{:keys [env claims parameters] :as _request}]
-  (let [recipe-id (sq/generate-squuid)
+  (let [recipe-id (random-uuid)
         account-id (:sub claims)
         recipe (:body parameters)]
     (recipe-db/transact-recipe (:datomic env) (assoc recipe :recipe-id recipe-id :account-id account-id))
@@ -49,7 +48,7 @@
   [{:keys [env parameters] :as _request}]
   (let [recipe-id (-> parameters :path :recipe-id)
         step (:body parameters)
-        step-id (str (sq/generate-squuid))]
+        step-id (str (random-uuid))]
     (recipe-db/transact-step (:datomic env) (assoc step :recipe-id recipe-id
                                                         :step-id step-id))
     (rr/created
@@ -73,7 +72,7 @@
   [{:keys [env parameters] :as _request}]
   (let [recipe-id (-> parameters :path :recipe-id)
         ingredient (:body parameters)
-        ingredient-id (str (sq/generate-squuid))]
+        ingredient-id (str (random-uuid))]
     (recipe-db/transact-ingredient (:datomic env) (assoc ingredient :recipe-id recipe-id
                                                                     :ingredient-id ingredient-id))
     (rr/created

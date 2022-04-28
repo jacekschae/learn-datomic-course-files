@@ -7,7 +7,6 @@
  :deps
  {org.clojure/clojure {:mvn/version "1.11.1"}
   org.clojure/tools.analyzer {:mvn/version "1.1.0"}
-  com.yetanalytics/colossal-squuid {:mvn/version "0.1.4"}
   ring/ring {:mvn/version "1.9.4"}
   integrant/integrant {:mvn/version "0.8.0"}
   metosin/reitit {:mvn/version "0.5.15"}
